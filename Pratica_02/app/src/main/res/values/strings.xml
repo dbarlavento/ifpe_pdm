@@ -1,7 +1,12 @@
 <resources>
     <string name="app_name">Pratica_02</string>
-    <string name="inputEmailHint">Digite seu e-mail</string>
+
+    <string name="in_email_hint">Digite seu e-mail</string>
     <string name="bt_enviar">Enviar</string>
-    <string name="acao_pesquisar">pesquisar</string>
-    <string name="acao_configurar">configurar</string>
+    <string name="bt_salvar">Salvar</string>
+
+    <!-- Strings de Menu -->
+    <string name="acao_pesquisar">Pesquisar</string>
+    <string name="acao_configurar">Configurações</string>
+    <string name="in_senha_hint">Digite sua senha</string>
 </resources>
