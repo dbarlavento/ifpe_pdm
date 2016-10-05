@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Pratica_02</string>
+    <string name="inputEmailHint">Digite seu e-mail</string>
+    <string name="bt_enviar">Enviar</string>
+    <string name="acao_pesquisar">pesquisar</string>
+    <string name="acao_configurar">configurar</string>
+</resources>
