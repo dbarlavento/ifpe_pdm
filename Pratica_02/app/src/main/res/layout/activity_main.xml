@@ -8,19 +8,27 @@
     android:orientation="vertical"
     tools:context="barlapp.pratica_02.MainActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/main_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="125dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/titulo_app"
+            android:layout_width="wrap_content"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:text="Fruit Go"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="48dp"
+            android:textAlignment="center"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
 
         <EditText
             android:id="@+id/in_email"
@@ -30,19 +38,29 @@
             android:maxLines="1"
             android:inputType="textEmailAddress"/>
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
         <EditText
             android:id="@+id/in_senha"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="@string/in_senha_hint"
             android:maxLines="1"
-            android:inputType="textEmailAddress|textPassword"/>
+            android:inputType="textPassword"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
 
         <Button
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bt_salvar"
-            android:id="@+id/button"/>
+            android:text="@string/bt_entrar"
+            android:layout_gravity="center"
+            android:onClick="entrar"/>
 
     </LinearLayout>
 
