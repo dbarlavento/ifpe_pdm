@@ -24,6 +24,5 @@ public class MainActivity extends AppCompatActivity {
 	public void entrar( View view ) {
 		Intent intent = new Intent( this, MapActivity.class );
 		startActivity( intent );
-
 	}
 }

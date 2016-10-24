@@ -16,4 +16,12 @@
     <!-- Activities -->
     <string name="title_activity_map">MapActivity</string>
 
+    <!-- Lista de frutas -->
+    <string-array name="futas_array">
+        <item>Manga</item>
+        <item>Jáca</item>
+        <item>Goiaba</item>
+        <item>Jambo</item>
+    </string-array>
+
 </resources>

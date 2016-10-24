@@ -2,6 +2,7 @@ package barlapp.pratica_02;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,7 +88,7 @@ public class MapActivity extends AppCompatActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.acao_nova_arvore:
-				Toast.makeText( this, "Adicionar árvore", Toast.LENGTH_SHORT ).show();
+				novaArvore();
 				return true;
 
 			case R.id.acao_configurar:
@@ -105,6 +107,13 @@ public class MapActivity extends AppCompatActivity {
 				return super.onOptionsItemSelected(item);
 
 		}
+	}
+
+	/* Realiza login no sistema */
+	public void novaArvore( View view ) {
+		Intent intent = new Intent( this, NovaArvoreActivity.class );
+		startActivity( intent );
+
 	}
 
 }
