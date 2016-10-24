@@ -12,8 +12,8 @@
     <string name="acao_configurar">Configurações</string>
     <string name="acao_sair">Sair</string>
     <string name="acao_nova_arvore">Nova Árvore</string>
-    <string name="title_activity_map">MapActivity</string>
-    <string name="action_settings">Settings</string>
 
-    <!-- -->
+    <!-- Activities -->
+    <string name="title_activity_map">MapActivity</string>
+
 </resources>
