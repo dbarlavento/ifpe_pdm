@@ -22,7 +22,7 @@ public class MapActivity extends AppCompatActivity {
 
 	LocationManager locationManager;
 
-	private void setInitLocation() {
+	private void setLocalizacao() {
 		if ( ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission( this, Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
 			// TODO: Consider calling
 			//    ActivityCompat#requestPermissions
@@ -74,7 +74,7 @@ public class MapActivity extends AppCompatActivity {
 		Toolbar mainToolBar = (Toolbar) findViewById(R.id.main_toolbar);
 		setSupportActionBar(mainToolBar);
 		locationManager = ( LocationManager ) getSystemService( Context.LOCATION_SERVICE );
-		setInitLocation();
+		setLocalizacao();
 	}
 
 	@Override
@@ -88,7 +88,8 @@ public class MapActivity extends AppCompatActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.acao_nova_arvore:
-				novaArvore();
+				Intent intent = new Intent( this, NovaArvoreActivity.class );
+				startActivity( intent );
 				return true;
 
 			case R.id.acao_configurar:
@@ -109,11 +110,9 @@ public class MapActivity extends AppCompatActivity {
 		}
 	}
 
-	/* Realiza login no sistema */
 	public void novaArvore( View view ) {
 		Intent intent = new Intent( this, NovaArvoreActivity.class );
 		startActivity( intent );
-
 	}
 
 }

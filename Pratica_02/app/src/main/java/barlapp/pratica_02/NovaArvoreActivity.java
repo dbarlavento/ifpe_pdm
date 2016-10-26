@@ -10,8 +10,10 @@ import android.widget.Spinner;
 
 public class NovaArvoreActivity extends AppCompatActivity {
 
-	private Spinner frutas;
-	private ArrayAdapter<CharSequence> adapter;
+	private Spinner frutas, producao, acesso;
+	private ArrayAdapter<CharSequence> adapterFrutas;
+	private ArrayAdapter<CharSequence> adapterProducao;
+	private ArrayAdapter<CharSequence> adapterAcesso;
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -19,7 +21,9 @@ public class NovaArvoreActivity extends AppCompatActivity {
 		setContentView( R.layout.activity_nova_arvore );
 		Toolbar mainToolBar = (Toolbar) findViewById(R.id.main_toolbar);
 		setSupportActionBar(mainToolBar);
-		iniSpinnerFrutas();
+		iniSpinnerSelFrutas();
+        iniSpinnerSelEstadoProducao();
+        iniSpinnerSelAcesso();
 	}
 
 	@Override
@@ -29,11 +33,27 @@ public class NovaArvoreActivity extends AppCompatActivity {
 		return true;
 	}
 
-	private void iniSpinnerFrutas() {
+	private void iniSpinnerSelFrutas() {
 		frutas = (Spinner) findViewById( R.id.sel_frutas );
-		adapter = ArrayAdapter.createFromResource(this, R.array.futas_array,
+		adapterFrutas = ArrayAdapter.createFromResource(this, R.array.futas_array,
 			  android.R.layout.simple_spinner_item);
-		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		frutas.setAdapter(adapter);
+		adapterFrutas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		frutas.setAdapter(adapterFrutas);
+	}
+
+	private void iniSpinnerSelEstadoProducao() {
+		producao = (Spinner) findViewById( R.id.sel_estado_producao );
+		adapterProducao = ArrayAdapter.createFromResource(this, R.array.estado_de_produção,
+				android.R.layout.simple_spinner_item);
+		adapterProducao.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		producao.setAdapter(adapterProducao);
+	}
+
+	private void iniSpinnerSelAcesso() {
+		acesso = (Spinner) findViewById( R.id.sel_facilidade_de_colheita );
+		adapterAcesso = ArrayAdapter.createFromResource(this, R.array.facilidade_de_colheita,
+				android.R.layout.simple_spinner_item);
+		adapterAcesso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		acesso.setAdapter(adapterAcesso);
 	}
 }
