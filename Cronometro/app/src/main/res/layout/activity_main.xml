@@ -110,15 +110,16 @@
             android:layout_height="match_parent">
 
             <android.support.design.widget.FloatingActionButton
+                android:id="@+id/bt_configurar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
                 app:fabSize="normal"
                 app:srcCompat="@drawable/ic_settings_black_48dp"
-                android:id="@+id/bt_configurar"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:onClick="configurar"/>
 
         </RelativeLayout>
     </LinearLayout>

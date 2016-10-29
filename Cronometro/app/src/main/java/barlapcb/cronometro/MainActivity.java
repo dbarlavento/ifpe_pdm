@@ -1,5 +1,6 @@
 package barlapcb.cronometro;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -106,8 +107,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cronometroDec.cancel();
     }
 
-    private void configurar() {
-
+    public void configurar( View view ) {
+        Intent intent = new Intent( this, ConfiguracaoActivity.class );
+        startActivity( intent );
     }
 
     private void limpar() {
