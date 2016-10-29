@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    final private long INTERVALO = 1;
+    final private long INTERVALO = 10;
 
     long valorInicial;
 
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onFinish() {
-
+                limpar();
             }
         }.start();
     }
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void reiniciar() {
+    private void configurar() {
 
     }
 
@@ -91,16 +91,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void atualizarTexto(long tempoRestante) {
-        int msec = (int) tempoRestante % 1000;
-        milisegundos.setText(Integer.toString(msec));
-
+        int mSec = (int) tempoRestante % 1000;
         int seg = (int) (tempoRestante / 1000);
+        int min = seg / 60;
 
-        if(seg < 60) {
-            segundos.setText(Integer.toString(seg));
+        if (mSec > 99) {
+            milisegundos.setText(Integer.toString(mSec));
+        } else if (mSec > 9) {
+            milisegundos.setText("0" + Integer.toString(mSec));
         } else {
-            minutos.setText(Integer.toString(seg / 60));
+            milisegundos.setText("00" + Integer.toString(mSec));
+        }
+
+        if (seg < 10) {
+            segundos.setText("0" + Integer.toString(seg));
+        } else {
             segundos.setText(Integer.toString(seg % 60));
+        }
+
+        if (min < 10) {
+            minutos.setText("0" + Integer.toString(min));
+        } else {
+            minutos.setText(Integer.toString(min));
         }
     }
 }
