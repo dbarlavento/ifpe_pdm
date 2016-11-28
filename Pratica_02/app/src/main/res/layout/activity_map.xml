@@ -25,6 +25,13 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
+        <TextView
+            android:text="Mapa aqui!!!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="36dp"/>
+
         <TextView android:id="@+id/latitude"
                   android:text=""
                   android:layout_width="match_parent"
@@ -38,6 +45,15 @@
                   android:layout_height="wrap_content"
                   android:maxLines="1"
                   android:textSize="36dp"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_add_location_black_48dp"
+            android:id="@+id/floatingActionButton2"
+            android:onClick="novaArvore"/>
 
 
     </LinearLayout>
