@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Fruta Grátis</string>
+    <string name="in_email_hint">E-mail</string>
+    <string name="in_senha_hint">Senha</string>
+    <string name="bt_entrar">Entrar</string>
+    <string name="bt_registrar">Registrar</string>
+    <string name="nome_app">Fruta Grátis</string>
+    <string name="in_primeiro_nome_hint">Primeiro Nome</string>
+    <string name="in_sobrenome_hint">Sobrenome</string>
+    <string name="recup_senha">ESQUECEU SUA SENHA?</string>
+    <string name="titulo_act_registrar">Registrar Novo Usuário</string>
+</resources>
