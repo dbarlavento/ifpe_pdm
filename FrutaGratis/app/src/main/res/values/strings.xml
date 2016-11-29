@@ -9,4 +9,7 @@
     <string name="in_sobrenome_hint">Sobrenome</string>
     <string name="recup_senha">ESQUECEU SUA SENHA?</string>
     <string name="titulo_act_registrar">Registrar Novo Usuário</string>
+    <string name="titulo_recup_senha">Recuperar Senha</string>
+    <string name="digite_email">Digite o e-mail cadastrado</string>
+    <string name="bt_recuperar">Recuperar</string>
 </resources>

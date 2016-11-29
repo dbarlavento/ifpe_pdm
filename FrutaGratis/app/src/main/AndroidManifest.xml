@@ -15,13 +15,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegistrarActivity"
+
+        <activity
+            android:name=".RegistrarActivity"
             android:label="@string/titulo_act_registrar"
-            android:parentActivityName="barlapcb.frutagratis.InitActivity">
+            android:parentActivityName=".InitActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="barlapcb.frutagratis.InitActivity" />
+                android:value=".InitActivity" />
         </activity>
+
+        <activity android:name=".RecupSenhaActivity"
+            android:label="@string/titulo_recup_senha"
+            android:parentActivityName=".InitActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InitActivity" />
+        </activity>
+
+        <activity android:name=".MapActivity"></activity>
     </application>
 
 </manifest>
