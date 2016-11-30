@@ -43,10 +43,6 @@ public class MapActivity extends AppCompatActivity {
                 Toast.makeText( this, "Configura o sistema", Toast.LENGTH_SHORT ).show();
                 return true;
 
-            case R.id.acao_sair:
-                Toast.makeText( this, "Retornar a tela de login", Toast.LENGTH_SHORT ).show();
-                return true;
-
             case R.id.acao_pesquisar:
                 Toast.makeText( this, "Pesquisar Frutas", Toast.LENGTH_SHORT ).show();
                 return true;
