@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context="barlapcb.frutagratis.NovaArvoreActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/cadastrar_arvore_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/label_sel_frutas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="Selecione uma fruta"
+            android:textSize="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <Spinner
+            android:id="@+id/sel_frutas"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/label_sel_estado_producao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="Qual o estado da árvore?"
+            android:textSize="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <Spinner
+            android:id="@+id/sel_estado_producao"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"/>
+
+        <TextView
+            android:id="@+id/label_sel_facilidade_de_colheita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:maxLines="1"
+            android:text="Facilidade de colheita?"
+            android:textSize="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
+
+        <Spinner
+            android:id="@+id/sel_facilidade_de_colheita"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="30dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancelar_nova_fruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:textSize="16dp"
+                android:text="@string/bt_cancelar_nova_fruta"
+                android:background="@color/colorPrimaryDark"/>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
+
+            <Button
+                android:id="@+id/salvar_nova_fruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="@string/bt_salvar_nova_fruta"
+                android:background="@color/colorAccent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

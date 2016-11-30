@@ -16,4 +16,28 @@
     <string name="acao_configurar">Configurações</string>
     <string name="acao_pesquisar">Buscar Fruta</string>
     <string name="acao_sair">Sair</string>
+    <string name="titulo_nova_arvore">Nova Árvore</string>
+    <string name="bt_salvar_nova_fruta">Adicionar</string>
+    <string name="bt_cancelar_nova_fruta">Cancelar</string>
+
+    <!-- Lista de frutas -->
+    <string-array name="futas_array">
+        <item>Manga</item>
+        <item>Jaca</item>
+        <item>Goiaba</item>
+        <item>Jambo</item>
+    </string-array>
+
+    <!-- Estados da árvore -->
+    <string-array name="estado_de_producao">
+        <item>Sem frutos ou flores</item>
+        <item>Com flores</item>
+        <item>Com frutos verdes</item>
+        <item>Com frutos maduros</item>
+    </string-array>
+
+    <string-array name="facilidade_de_colheita">
+        <item>Difícil</item>
+        <item>Fácil</item>
+    </string-array>
 </resources>

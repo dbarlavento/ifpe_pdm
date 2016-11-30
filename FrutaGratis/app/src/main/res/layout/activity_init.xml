@@ -70,5 +70,7 @@
         android:text="@string/recup_senha"
         android:layout_gravity="center"
         android:textColor="@color/linkTextColor"
-        android:onClick="recuperarSenha"/>
+        android:onClick="recuperarSenha"
+        android:textSize="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 </LinearLayout>

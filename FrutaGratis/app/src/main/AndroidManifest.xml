@@ -25,7 +25,8 @@
                 android:value=".InitActivity" />
         </activity>
 
-        <activity android:name=".RecupSenhaActivity"
+        <activity
+            android:name=".RecupSenhaActivity"
             android:label="@string/titulo_recup_senha"
             android:parentActivityName=".InitActivity">
             <meta-data
@@ -33,7 +34,16 @@
                 android:value=".InitActivity" />
         </activity>
 
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".MapActivity" />
+
+        <activity
+            android:name=".NovaArvoreActivity"
+            android:label="@string/titulo_nova_arvore"
+            android:parentActivityName=".MapActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MapActivity" />
+        </activity>
     </application>
 
 </manifest>
