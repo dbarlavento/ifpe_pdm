@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class MapActivity extends AppCompatActivity {
@@ -34,6 +35,11 @@ public class MapActivity extends AppCompatActivity {
 
     public void sair(MenuItem item) {
         finish();
+    }
+
+    public void novaArvore( View view ) {
+        Intent intent = new Intent( this, NovaArvoreActivity.class );
+        startActivity( intent );
     }
 
     @Override

@@ -22,6 +22,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!--
         <fragment
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -30,13 +31,14 @@
             android:layout_height="wrap_content">
 
         </fragment>
+        -->
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/bt_nova_arvore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
-            app:fabSize="mini"
+            app:fabSize="normal"
             app:srcCompat="@drawable/ic_add_location_black_48dp"
             android:onClick="novaArvore"/>
 
