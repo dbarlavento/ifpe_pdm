@@ -71,6 +71,5 @@
         android:layout_gravity="center"
         android:textColor="@color/linkTextColor"
         android:onClick="recuperarSenha"
-        android:textSize="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:textSize="16dp"/>
 </LinearLayout>
