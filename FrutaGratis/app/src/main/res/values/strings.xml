@@ -12,4 +12,8 @@
     <string name="titulo_recup_senha">Recuperar Senha</string>
     <string name="digite_email">Digite o e-mail cadastrado</string>
     <string name="bt_recuperar">Recuperar</string>
+    <string name="bt_enviar">Enviar</string>
+    <string name="acao_configurar">Configurações</string>
+    <string name="acao_pesquisar">Buscar Fruta</string>
+    <string name="acao_sair">Sair</string>
 </resources>

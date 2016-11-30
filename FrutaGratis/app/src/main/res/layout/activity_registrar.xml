@@ -62,10 +62,10 @@
             android:inputType="textPassword"/>
 
         <Button
-            android:id="@+id/bt_registrar"
+            android:id="@+id/bt_enviar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bt_registrar"
+            android:text="@string/bt_enviar"
             android:textSize="16dp"
             android:layout_gravity="center"
             android:onClick="persistirUsuario"

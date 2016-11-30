@@ -11,7 +11,7 @@ public class RecupSenhaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recup_senha);
-        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar_registrar);
+        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar_recuperar);
         setSupportActionBar(toolBar);
         ActionBar actBar = getSupportActionBar();
         actBar.setDisplayHomeAsUpEnabled(true);

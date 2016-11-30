@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/acao_pesquisar"
+        android:icon="@drawable/ic_search_white_48dp"
+        android:title="@string/acao_pesquisar"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/acao_configurar"
+        android:title="@string/acao_configurar"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/acao_sair"
+        android:title="@string/acao_sair"
+        app:showAsAction="never"/>
+</menu>
