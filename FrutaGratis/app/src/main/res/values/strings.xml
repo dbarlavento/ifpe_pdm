@@ -19,6 +19,9 @@
     <string name="titulo_nova_arvore">Nova Árvore</string>
     <string name="bt_salvar_nova_fruta">Adicionar</string>
     <string name="bt_cancelar_nova_fruta">Cancelar</string>
+    <string name="label_sel_frutas">Selecione uma fruta</string>
+    <string name="label_sel_estado_producao">Qual o estado da árvore?</string>
+    <string name="label_sel_facilidade_de_colheita">Facilidade de colheita</string>
 
     <!-- Lista de frutas -->
     <string-array name="futas_array">

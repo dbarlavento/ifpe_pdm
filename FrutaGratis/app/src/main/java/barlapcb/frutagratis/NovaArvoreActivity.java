@@ -1,7 +1,9 @@
 package barlapcb.frutagratis;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -16,6 +18,13 @@ public class NovaArvoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_arvore);
+        Toolbar toolBar = (Toolbar) findViewById(R.id.toolbar_cadastrar_arvore);
+        setSupportActionBar(toolBar);
+        ActionBar actBar = getSupportActionBar();
+        actBar.setDisplayHomeAsUpEnabled(true);
+        iniSpinnerSelFrutas();
+        iniSpinnerSelEstadoProducao();
+        iniSpinnerSelAcesso();
     }
 
     private void iniSpinnerSelFrutas() {

@@ -8,7 +8,7 @@
     tools:context="barlapcb.frutagratis.NovaArvoreActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/cadastrar_arvore_toolbar"
+        android:id="@+id/toolbar_cadastrar_arvore"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
@@ -32,7 +32,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginBottom="10dp"
             android:maxLines="1"
-            android:text="Selecione uma fruta"
+            android:text="@string/label_sel_frutas"
             android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:maxLines="1"
-            android:text="Qual o estado da árvore?"
+            android:text="@string/label_sel_estado_producao"
             android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:maxLines="1"
-            android:text="Facilidade de colheita?"
+            android:text="@string/label_sel_facilidade_de_colheita"
             android:textSize="20dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
@@ -101,7 +101,6 @@
                 android:textSize="16dp"
                 android:text="@string/bt_salvar_nova_fruta"
                 android:background="@color/colorAccent"/>
-
         </LinearLayout>
 
     </LinearLayout>
