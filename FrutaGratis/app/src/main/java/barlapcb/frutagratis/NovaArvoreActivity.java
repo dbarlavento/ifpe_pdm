@@ -1,9 +1,11 @@
 package barlapcb.frutagratis;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -13,6 +15,7 @@ public class NovaArvoreActivity extends AppCompatActivity {
     private ArrayAdapter<CharSequence> adapterFrutas;
     private ArrayAdapter<CharSequence> adapterProducao;
     private ArrayAdapter<CharSequence> adapterAcesso;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,8 @@ public class NovaArvoreActivity extends AppCompatActivity {
         iniSpinnerSelFrutas();
         iniSpinnerSelEstadoProducao();
         iniSpinnerSelAcesso();
+
+        intent = getIntent();
     }
 
     private void iniSpinnerSelFrutas() {
@@ -50,4 +55,10 @@ public class NovaArvoreActivity extends AppCompatActivity {
         adapterAcesso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         acesso.setAdapter(adapterAcesso);
     }
+
+    public void voltarMapa(View view) {
+        finish();
+    }
+
+    
 }

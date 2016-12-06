@@ -87,7 +87,8 @@
                 android:layout_marginBottom="30dp"
                 android:textSize="16dp"
                 android:text="@string/bt_cancelar_nova_fruta"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorPrimaryDark"
+                android:onClick="voltarMapa"/>
 
             <Space
                 android:layout_width="30dp"

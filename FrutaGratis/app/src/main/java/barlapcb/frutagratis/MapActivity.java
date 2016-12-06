@@ -28,6 +28,9 @@ public class MapActivity extends AppCompatActivity {
     private TextView latitude;
     private TextView longitude;
 
+    public final static String LATITUDE_ARVORE = "latitudeArvore";
+    public final static String LONGITUDE_ARVORE = "longitudeArvore";
+
     private final LocationListener locationListenerPosicaoUsuario = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -106,7 +109,18 @@ public class MapActivity extends AppCompatActivity {
 
     public void novaArvore(View view) {
         Intent intent = new Intent(this, NovaArvoreActivity.class);
-        startActivity(intent);
+
+        String arLatitude = latitude.getText().toString();
+        String arLongitude = longitude.getText().toString();
+
+        if( arLatitude.length() > 1 && arLongitude.length() > 1) {
+            intent.putExtra(LATITUDE_ARVORE, arLatitude);
+            intent.putExtra(LONGITUDE_ARVORE, arLongitude);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "O GPS está definindo sua localização, aguarde alguns instantes",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void getLocal(View view) {
