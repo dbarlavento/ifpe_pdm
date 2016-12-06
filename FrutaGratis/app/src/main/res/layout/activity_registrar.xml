@@ -44,7 +44,7 @@
             android:maxLines="1"/>
 
         <EditText
-            android:id="@+id/in_email"
+            android:id="@+id/regis_in_email"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="30dp"
@@ -53,7 +53,7 @@
             android:inputType="textEmailAddress"/>
 
         <EditText
-            android:id="@+id/in_senha"
+            android:id="@+id/regis_in_senha"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="30dp"

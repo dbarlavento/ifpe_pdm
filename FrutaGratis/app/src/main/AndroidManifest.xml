@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="barlapcb.frutagratis">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -34,7 +37,12 @@
                 android:value=".InitActivity" />
         </activity>
 
-        <activity android:name=".MapActivity" />
+        <activity android:name=".MapActivity"
+            android:parentActivityName=".InitActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".InitActivity" />
+        </activity>
 
         <activity
             android:name=".NovaArvoreActivity"

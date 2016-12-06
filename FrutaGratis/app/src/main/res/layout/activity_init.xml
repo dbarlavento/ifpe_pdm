@@ -24,7 +24,7 @@
         android:textAlignment="center"/>
 
     <EditText
-        android:id="@+id/in_email"
+        android:id="@+id/login_in_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="30dp"
@@ -34,7 +34,7 @@
 
 
     <EditText
-        android:id="@+id/in_senha"
+        android:id="@+id/login_in_senha"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginBottom="30dp"

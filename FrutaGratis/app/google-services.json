@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "118842338213",
+    "firebase_url": "https://fruta-gratis.firebaseio.com",
+    "project_id": "fruta-gratis",
+    "storage_bucket": "fruta-gratis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118842338213:android:7b732954faa1748d",
+        "android_client_info": {
+          "package_name": "barlapcb.frutagratis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118842338213-4336ulsukjsjajdfcj7u7rup6spehhrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTpxMK3p1GoRijq7EK0U3nOCia1ifQlGw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
