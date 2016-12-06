@@ -8,14 +8,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import barlapcb.frutagratis.entidades.Arvore;
 
 public class NovaArvoreActivity extends AppCompatActivity {
 
     private Spinner frutas, producao, acesso;
+
     private ArrayAdapter<CharSequence> adapterFrutas;
     private ArrayAdapter<CharSequence> adapterProducao;
     private ArrayAdapter<CharSequence> adapterAcesso;
+
     private Intent intent;
+
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,5 +73,27 @@ public class NovaArvoreActivity extends AppCompatActivity {
         finish();
     }
 
-    
+    public void persistirArvore(View view) {
+        Arvore arvore = new Arvore(intent.getStringExtra(MapActivity.LATITUDE_ARVORE),
+                intent.getStringExtra(MapActivity.LONGITUDE_ARVORE));
+
+        arvore.setFruta(frutas.getSelectedItem().toString());
+        arvore.setEstadoFrutos(producao.getSelectedItem().toString());
+        arvore.setFacilidadeColheita(acesso.getSelectedItem().toString());
+
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference dadosArvore = database.getReference("main").child("arvores");
+        arvore.setChave(dadosArvore.push().getKey());
+
+        Map<String, Object> valoresArvore = arvore.toMap();
+
+        Map<String, Object> updateArvore = new HashMap<>();
+        updateArvore.put("/arvores/" + arvore.getChave(), valoresArvore);
+
+        dadosArvore.updateChildren(updateArvore);
+
+        Toast.makeText(this, "Árvore adicionada com sucesso", Toast.LENGTH_LONG).show();
+
+        finish();
+    }
 }

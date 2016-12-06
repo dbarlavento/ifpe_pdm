@@ -101,7 +101,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:text="@string/bt_salvar_nova_fruta"
-                android:background="@color/colorAccent"/>
+                android:background="@color/colorAccent"
+                android:onClick="persistirArvore"/>
         </LinearLayout>
 
     </LinearLayout>

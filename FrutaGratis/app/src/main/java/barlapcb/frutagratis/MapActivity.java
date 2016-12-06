@@ -119,7 +119,7 @@ public class MapActivity extends AppCompatActivity {
             startActivity(intent);
         } else {
             Toast.makeText(this, "O GPS está definindo sua localização, aguarde alguns instantes",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
         }
     }
 
