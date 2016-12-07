@@ -43,4 +43,5 @@
         <item>Difícil</item>
         <item>Fácil</item>
     </string-array>
+    <string name="title_activity_nova_map">Map</string>
 </resources>

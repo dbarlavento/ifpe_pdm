@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="barlapcb.frutagratis">
 
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".RegistrarActivity"
             android:label="@string/titulo_act_registrar"
@@ -27,7 +30,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".InitActivity" />
         </activity>
-
         <activity
             android:name=".RecupSenhaActivity"
             android:label="@string/titulo_recup_senha"
@@ -36,14 +38,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".InitActivity" />
         </activity>
-
-        <activity android:name=".MapActivity"
+        <activity
+            android:name=".MapActivity"
             android:parentActivityName=".InitActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".InitActivity" />
         </activity>
-
         <activity
             android:name=".NovaArvoreActivity"
             android:label="@string/titulo_nova_arvore"
@@ -52,10 +53,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MapActivity" />
         </activity>
-    </application>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
 
-    <uses-feature
-        android:glEsVersion="0x00020000"
-        android:required="true"/>
+        <activity
+            android:name=".NovaMapActivity"/>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+    </application>
 
 </manifest>
