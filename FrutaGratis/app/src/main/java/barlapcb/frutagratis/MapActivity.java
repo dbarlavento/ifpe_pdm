@@ -19,9 +19,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MapActivity extends AppCompatActivity {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private LocationManager locationManeger;
     private LocationProvider locationProvider;
 
@@ -31,11 +38,18 @@ public class MapActivity extends AppCompatActivity {
     public final static String LATITUDE_ARVORE = "latitudeArvore";
     public final static String LONGITUDE_ARVORE = "longitudeArvore";
 
+    private GoogleMap mMap;
+    private Marker tokeUsuario;
+
     private final LocationListener locationListenerPosicaoUsuario = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
             latitude.setText( "Latitude: " + location.getLatitude() );
             longitude.setText( "Longitude: " + location.getLongitude() );
+
+            LatLng localUsuario = new LatLng(location.getLatitude(), location.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(localUsuario));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(localUsuario));
         }
 
         @Override
@@ -63,6 +77,10 @@ public class MapActivity extends AppCompatActivity {
 
         latitude = ( TextView ) findViewById( R.id.latitude );
         longitude = ( TextView ) findViewById( R.id.longitude );
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -164,5 +182,10 @@ public class MapActivity extends AppCompatActivity {
 
             }
         }, null );
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
     }
 }
