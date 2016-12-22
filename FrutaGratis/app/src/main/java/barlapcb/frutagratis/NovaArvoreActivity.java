@@ -88,7 +88,7 @@ public class NovaArvoreActivity extends AppCompatActivity {
         Map<String, Object> valoresArvore = arvore.toMap();
 
         Map<String, Object> updateArvore = new HashMap<>();
-        updateArvore.put("/arvores/" + arvore.getChave(), valoresArvore);
+        updateArvore.put(arvore.getChave(), valoresArvore);
 
         dadosArvore.updateChildren(updateArvore);
 

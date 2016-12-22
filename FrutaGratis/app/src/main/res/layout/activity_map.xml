@@ -34,7 +34,7 @@
                     android:layout_gravity="bottom|end"
                     android:clickable="true"
                     app:fabSize="normal"
-                    app:srcCompat="@drawable/ic_add_location_black_48dp"
+                    app:srcCompat="@drawable/add_arvore"
                     android:onClick="novaArvore"/>
         </fragment>
 
