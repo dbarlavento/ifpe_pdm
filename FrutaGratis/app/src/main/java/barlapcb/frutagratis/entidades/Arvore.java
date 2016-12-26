@@ -1,10 +1,10 @@
 package barlapcb.frutagratis.entidades;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Daniel on 05/12/2016.
@@ -18,14 +18,29 @@ public class Arvore {
     private String facilidadeColheita;
 
     //Posição da árvore
-    private String posLatitude;
-    private String posLongitude;
+    private String latitude;
+    private String longitude;
 
     public Arvore(){}
 
-    public Arvore(String posLatitude, String posLongitude) {
-        this.posLatitude = posLatitude;
-        this.posLongitude = posLongitude;
+    public Arvore(double latitude, double longitude) {
+        this.latitude = String.valueOf(latitude);
+        this.longitude = String.valueOf(longitude);
+    }
+
+    public Arvore(String latitude, String longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Arvore(String chave, String fruta, String estadoFrutos, String facilidadeColheita,
+                  String latitude, String longitude) {
+        this.chave = chave;
+        this.fruta = fruta;
+        this.estadoFrutos = estadoFrutos;
+        this.facilidadeColheita = facilidadeColheita;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getChave() {
@@ -60,20 +75,25 @@ public class Arvore {
         this.facilidadeColheita = facilidadeColheita;
     }
 
-    public String getPosLatitude() {
-        return posLatitude;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setPosLatitude( String latitude ) {
-        this.posLatitude = latitude;
+    public void setLatitude(String latitude ) {
+        this.latitude = latitude;
     }
 
-    public String getPosLongitude() {
-        return posLongitude;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setPosLongitude(String longitude) {
-        this.posLongitude = longitude;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    @Exclude
+    public LatLng getPosicao() {
+        return new LatLng(Double.valueOf(latitude), Double.valueOf(longitude));
     }
 
 
@@ -84,15 +104,15 @@ public class Arvore {
 
         Arvore arvore = (Arvore) o;
 
-        if (!posLatitude.equals(arvore.posLatitude)) return false;
-        return posLongitude.equals(arvore.posLongitude);
+        if (!latitude.equals(arvore.latitude)) return false;
+        return longitude.equals(arvore.longitude);
 
     }
 
     @Override
     public int hashCode() {
-        int result = posLatitude.hashCode();
-        result = 31 * result + posLongitude.hashCode();
+        int result = latitude.hashCode();
+        result = 31 * result + longitude.hashCode();
         return result;
     }
 
@@ -103,10 +123,9 @@ public class Arvore {
         result.put("fruta", fruta);
         result.put("estadoFrutos", estadoFrutos);
         result.put("facilidadeColheita", facilidadeColheita);
-        result.put("latitude", posLatitude);
-        result.put("longitude", posLongitude);
+        result.put("latitude", latitude);
+        result.put("longitude", longitude);
 
         return result;
     }
-
 }

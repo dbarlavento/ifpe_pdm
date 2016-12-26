@@ -7,10 +7,11 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -26,9 +27,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import barlapcb.frutagratis.entidades.Arvore;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private LocationManager locationManeger;
@@ -39,6 +44,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private double latitude;
     private double longitude;
+    private LatLng localUsuario;
 
     private boolean flProcurandoLocal = false;
 
@@ -48,17 +54,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private Marker tokenUsuario;
 
+    private FirebaseDatabase banco;
+    private DatabaseReference refArvores;
+
     private final LocationListener locationListenerPosicaoUsuario = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
             latitude = location.getLatitude();
             longitude = location.getLongitude();
-
-            LatLng localUsuario = new LatLng(location.getLatitude(), location.getLongitude());
-
+            localUsuario = new LatLng(location.getLatitude(), location.getLongitude());
             tokenUsuario.setPosition(localUsuario);
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 16));
-            CameraUpdateFactory.zoomTo(50);
             flProcurandoLocal = true;
         }
 
@@ -81,9 +87,38 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     };
 
-    ValueEventListener arvoresListener = new ValueEventListener() {
+    ChildEventListener arvoresListener = new ChildEventListener() {
+
         @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
+        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            Arvore ar = dataSnapshot.getValue(Arvore.class);
+
+            if (ar == null) {
+                Toast.makeText(MapActivity.this, "Árvore Nula!!!",
+                        Toast.LENGTH_SHORT).show();
+            } else {
+
+                Log.d("Daniel: ", "Arvore: " + ar);
+
+                mMap.addMarker(new MarkerOptions().
+                        icon(BitmapDescriptorFactory.fromResource(R.drawable.marca_arvore))
+                        .position(ar.getPosicao())
+                );
+            }
+        }
+
+        @Override
+        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
         }
 
@@ -125,12 +160,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             locationManeger.requestLocationUpdates(
                     gpsLocationProvider.getName(), 10000, 1, locationListenerPosicaoUsuario);
             ultimaLocalizacao = locationManeger.getLastKnownLocation(gpsLocationProvider.getName());
-            latitude = ultimaLocalizacao.getLatitude();
-            longitude = ultimaLocalizacao.getLongitude();
+            if (ultimaLocalizacao == null) {
+                latitude = 0;
+                longitude = 0;
+            } else {
+                latitude = ultimaLocalizacao.getLatitude();
+                longitude = ultimaLocalizacao.getLongitude();
+            }
+            localUsuario = new LatLng(latitude, longitude);
         } else {
             Toast.makeText(this, "Seu GPS está desabilitado",
                     Toast.LENGTH_SHORT).show();
         }
+
+        banco = FirebaseDatabase.getInstance();
+        refArvores = banco.getReference("main").child("arvores");
+        refArvores.addChildEventListener(arvoresListener);
     }
 
     @Override
@@ -151,8 +196,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
         tokenUsuario = mMap.addMarker(new MarkerOptions().flat(true).icon(BitmapDescriptorFactory
                 .fromResource(R.drawable.ic_navigation_black_18dp)).
-                position(new LatLng(latitude,longitude))
+                position(localUsuario)
         );
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 16));
+        //CameraUpdateFactory.zoomTo(30);
     }
 
     public void sair(MenuItem item) {
