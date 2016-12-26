@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.12"
-     inkscape:cx="15.3023"
-     inkscape:cy="18.54034"
+     inkscape:cx="43.524956"
+     inkscape:cy="26.35284"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -60,51 +60,63 @@
      id="layer1"
      transform="translate(0,-1021.3622)">
     <g
-       id="g3499"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90">
+       id="g3399"
+       inkscape:export-filename="D:\Daniel\Dropbox\IFPE\2016.2\PDM\Repositorio\ifpe_pdm\FrutaGratis\app\src\main\res\drawable\add_arvore.png"
+       inkscape:export-xdpi="89.999886"
+       inkscape:export-ydpi="89.999886">
       <g
-         transform="matrix(2.3198108,0,0,2.322583,0,-1391.8363)"
-         style="fill:#000000"
-         inkscape:export-ydpi="86.992905"
-         inkscape:export-xdpi="86.992905"
-         id="g3451">
+         id="g3390">
+        <g
+           id="g3383"
+           transform="translate(0,3.320165)">
+          <rect
+             transform="matrix(0.57689058,0.81682143,-0.57689058,0.81682143,0,0)"
+             y="572.73004"
+             x="635.20795"
+             height="40.212322"
+             width="40.212322"
+             id="rect3425"
+             style="fill:#000000" />
+          <ellipse
+             ry="17.419373"
+             rx="17.398581"
+             cy="997.78149"
+             cx="35.957066"
+             id="path3358-9"
+             style="fill:#000000" />
+          <ellipse
+             ry="17.419373"
+             rx="17.398581"
+             cy="1005.6239"
+             cx="17.398581"
+             id="path3358-9-9"
+             style="fill:#000000" />
+          <ellipse
+             ry="17.419373"
+             rx="17.398581"
+             cy="1005.6239"
+             cx="54.601418"
+             id="path3358-9-4"
+             style="fill:#000000" />
+          <ellipse
+             ry="17.419373"
+             rx="17.398581"
+             cy="1005.6239"
+             cx="36.042934"
+             id="path3358-9-4-6"
+             style="fill:#000000" />
+        </g>
         <rect
-           style="fill:#000000"
-           id="rect3425"
-           width="17.320509"
-           height="17.320509"
-           x="640.57251"
-           y="613.66162"
-           transform="matrix(0.57735027,0.81649658,-0.57735027,0.81649658,0,0)" />
-        <circle
-           style="fill:#000000"
-           id="path3358-9"
-           cx="15.5"
-           cy="1028.8622"
-           r="7.5" />
-        <circle
-           style="fill:#000000"
-           id="path3358-9-9"
-           cx="7.5"
-           cy="1032.2388"
-           r="7.5" />
-        <circle
-           style="fill:#000000"
-           id="path3358-9-4"
-           cx="23.537014"
-           cy="1032.2388"
-           r="7.5" />
-        <circle
-           style="fill:#000000"
-           id="path3358-9-4-6"
-           cx="15.537014"
-           cy="1032.2388"
-           r="7.5" />
+           y="1020.6824"
+           x="24.5"
+           height="35"
+           width="23"
+           id="rect3362"
+           style="fill:#000000" />
       </g>
       <g
          style="fill:#ffffff"
-         transform="matrix(2,0,0,2,4.6497575,-1057.8227)"
+         transform="matrix(2,0,0,2,4.6497564,-1052.5025)"
          id="g3475">
         <rect
            style="fill:#ffffff"

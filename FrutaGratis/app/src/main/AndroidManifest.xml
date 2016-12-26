@@ -5,6 +5,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!-- Para android 5.0 ou superior -->
+    <uses-feature android:name="android.hardware.location.gps" />
+
+
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />

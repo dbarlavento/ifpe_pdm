@@ -43,6 +43,12 @@ public class NovaArvoreActivity extends AppCompatActivity {
         iniSpinnerSelAcesso();
 
         intent = getIntent();
+
+        if( intent.getStringExtra(MapActivity.LATITUDE_ARVORE) == null ||
+                intent.getStringExtra(MapActivity.LONGITUDE_ARVORE) == null ) {
+            Toast.makeText(this, "O GPS está definindo sua localização, aguarde ...", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     private void iniSpinnerSelFrutas() {

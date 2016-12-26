@@ -26,10 +26,16 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
     private LocationManager locationManeger;
-    private LocationProvider locationProvider;
+    private LocationProvider gpsLocationProvider;
+    private LocationProvider netLocationProvider;
+
+    Location ultimaLocalizacao;
 
     private double latitude;
     private double longitude;
@@ -49,8 +55,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             longitude = location.getLongitude();
 
             LatLng localUsuario = new LatLng(location.getLatitude(), location.getLongitude());
+
             tokenUsuario.setPosition(localUsuario);
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(localUsuario));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 16));
+            CameraUpdateFactory.zoomTo(50);
             flProcurandoLocal = true;
         }
 
@@ -61,14 +69,27 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         @Override
         public void onProviderEnabled(String provider) {
-
+            Toast.makeText(MapActivity.this, "GPS habilitado",
+                    Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onProviderDisabled(String provider) {
             flProcurandoLocal = false;
-            Toast.makeText(MapActivity.this, "Seu GPS está desabilitado",
+            Toast.makeText(MapActivity.this, "GPS desabilitado",
                     Toast.LENGTH_LONG).show();
+        }
+    };
+
+    ValueEventListener arvoresListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
         }
     };
 
@@ -89,7 +110,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onStart();
 
         locationManeger = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationProvider = locationManeger.getProvider(LocationManager.GPS_PROVIDER);
+        gpsLocationProvider = locationManeger.getProvider(LocationManager.GPS_PROVIDER);
+        netLocationProvider = locationManeger.getProvider(LocationManager.NETWORK_PROVIDER);
 
         if (ActivityCompat.checkSelfPermission(
                 this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
@@ -99,9 +121,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             return;
         }
 
-        if(locationProvider != null) {
+        if (gpsLocationProvider != null) {
             locationManeger.requestLocationUpdates(
-                    locationProvider.getName(), 10000, 1, locationListenerPosicaoUsuario);
+                    gpsLocationProvider.getName(), 10000, 1, locationListenerPosicaoUsuario);
+            ultimaLocalizacao = locationManeger.getLastKnownLocation(gpsLocationProvider.getName());
+            latitude = ultimaLocalizacao.getLatitude();
+            longitude = ultimaLocalizacao.getLongitude();
         } else {
             Toast.makeText(this, "Seu GPS está desabilitado",
                     Toast.LENGTH_SHORT).show();
@@ -121,6 +146,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         return true;
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        tokenUsuario = mMap.addMarker(new MarkerOptions().flat(true).icon(BitmapDescriptorFactory
+                .fromResource(R.drawable.ic_navigation_black_18dp)).
+                position(new LatLng(latitude,longitude))
+        );
+    }
+
     public void sair(MenuItem item) {
         FirebaseAuth.getInstance().signOut();
         finish();
@@ -129,22 +163,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     public void novaArvore(View view) {
         Intent intent = new Intent(this, NovaArvoreActivity.class);
 
-        if( flProcurandoLocal ) {
-            intent.putExtra(LATITUDE_ARVORE, latitude);
-            intent.putExtra(LONGITUDE_ARVORE, longitude);
+        if (flProcurandoLocal) {
+            intent.putExtra(LATITUDE_ARVORE, String.valueOf(latitude));
+            intent.putExtra(LONGITUDE_ARVORE, String.valueOf(longitude));
             startActivity(intent);
         } else {
             Toast.makeText(this, "O GPS está definindo sua localização, aguarde ...",
                     Toast.LENGTH_LONG).show();
         }
-    }
-
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        tokenUsuario = mMap.addMarker(new MarkerOptions().flat(true).icon(BitmapDescriptorFactory
-                .fromResource(R.drawable.ic_navigation_black_18dp)).
-                position(new LatLng(90,45))
-        );
     }
 }

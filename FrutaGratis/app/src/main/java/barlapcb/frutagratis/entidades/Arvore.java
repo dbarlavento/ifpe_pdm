@@ -14,9 +14,7 @@ public class Arvore {
     private String chave;
 
     private String fruta;
-
     private String estadoFrutos;
-
     private String facilidadeColheita;
 
     //Posição da árvore
