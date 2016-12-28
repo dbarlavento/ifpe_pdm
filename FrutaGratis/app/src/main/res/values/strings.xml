@@ -44,4 +44,5 @@
         <item>Fácil</item>
     </string-array>
     <string name="title_activity_nova_map">Map</string>
+    <string name="in_pesquisa_hint">Fruta</string>
 </resources>

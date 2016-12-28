@@ -3,12 +3,15 @@ package barlapcb.frutagratis;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -16,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,6 +36,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import barlapcb.frutagratis.entidades.Arvore;
 
@@ -56,6 +62,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private FirebaseDatabase banco;
     private DatabaseReference refArvores;
+    private static String filtroFruta = "";
 
     private final LocationListener locationListenerPosicaoUsuario = new LocationListener() {
         @Override
@@ -64,7 +71,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             longitude = location.getLongitude();
             localUsuario = new LatLng(location.getLatitude(), location.getLongitude());
             tokenUsuario.setPosition(localUsuario);
-            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 16));
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(localUsuario));
             flProcurandoLocal = true;
         }
 
@@ -93,17 +100,22 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
             Arvore ar = dataSnapshot.getValue(Arvore.class);
 
-            if (ar == null) {
-                Toast.makeText(MapActivity.this, "Árvore Nula!!!",
-                        Toast.LENGTH_SHORT).show();
-            } else {
-
-                Log.d("Daniel: ", "Arvore: " + ar);
-
-                mMap.addMarker(new MarkerOptions().
-                        icon(BitmapDescriptorFactory.fromResource(R.drawable.marca_arvore))
+            if (ar != null && filtroFruta.isEmpty()) {
+                mMap.addMarker(new MarkerOptions()
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.marca_arvore))
                         .position(ar.getPosicao())
+                        .title(ar.getFruta())
+                        .snippet("Estado das frutas: " + ar.getEstadoFrutos())
                 );
+            } else {
+                if( ar.getFruta().equals(filtroFruta) ) {
+                    mMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.marca_arvore))
+                            .position(ar.getPosicao())
+                            .title(ar.getFruta())
+                            .snippet("Estado das frutas: " + ar.getEstadoFrutos())
+                    );
+                }
             }
         }
 
@@ -194,12 +206,35 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
         tokenUsuario = mMap.addMarker(new MarkerOptions().flat(true).icon(BitmapDescriptorFactory
                 .fromResource(R.drawable.ic_navigation_black_18dp)).
                 position(localUsuario)
         );
+
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(localUsuario, 16));
-        //CameraUpdateFactory.zoomTo(30);
+    }
+
+    public void filtrar(MenuItem item) {
+        EditText pesquisa = (EditText) findViewById(R.id.in_pesquisa);
+
+        mMap.clear();
+        tokenUsuario = mMap.addMarker(new MarkerOptions().flat(true).icon(BitmapDescriptorFactory
+                .fromResource(R.drawable.ic_navigation_black_18dp)).
+                position(localUsuario)
+        );
+
+        if( filtroFruta.isEmpty() ) {
+            filtroFruta = pesquisa.getText().toString();
+            item.setIcon(R.drawable.ic_clear_white_48dp);
+            refArvores.removeEventListener(arvoresListener);
+            refArvores.addChildEventListener(arvoresListener);
+        } else {
+            filtroFruta = "";
+            item.setIcon(R.drawable.ic_search_white_48dp);
+            refArvores.removeEventListener(arvoresListener);
+            refArvores.addChildEventListener(arvoresListener);
+        }
     }
 
     public void sair(MenuItem item) {
